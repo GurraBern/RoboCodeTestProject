@@ -1,7 +1,7 @@
 package group9.framework.targeting;
 
 import java.awt.geom.Point2D;
-import group9.framework.Robot;
+import group9.framework.SPLRobot;
 import group9.framework.util.*;
 import robocode.AdvancedRobot;
 import robocode.Condition;
@@ -11,10 +11,11 @@ import robocode.util.Utils;
 public class GuessFactorTargeting implements ITarget {
 
     private double BULLET_POWER;
-    private Robot robot;
+    private AdvancedRobot robot;
 
-    public GuessFactorTargeting(Robot _robot){
+    public GuessFactorTargeting(AdvancedRobot _robot){
         robot = _robot;
+		BULLET_POWER = 1.9f;
     }
 
     @Override
@@ -23,15 +24,15 @@ public class GuessFactorTargeting implements ITarget {
 		double enemyDistance = e.getDistance();
 		double enemyVelocity = e.getVelocity();
 		if (enemyVelocity != 0) {
-		    Robot.lateralDirection = CalcUtils.sign(enemyVelocity * Math.sin(e.getHeadingRadians() - enemyAbsoluteBearing));
+		    SPLRobot.lateralDirection = CalcUtils.sign(enemyVelocity * Math.sin(e.getHeadingRadians() - enemyAbsoluteBearing));
 		}
 		GFTWave wave = new GFTWave(robot);
 		wave.gunLocation = new Point2D.Double(robot.getX(), robot.getY());
 		GFTWave.targetLocation = CalcUtils.project(wave.gunLocation, enemyAbsoluteBearing, enemyDistance);
-		wave.lateralDirection = Robot.lateralDirection;
+		wave.lateralDirection = SPLRobot.lateralDirection;
 		wave.bulletPower = BULLET_POWER;
-		wave.setSegmentations(enemyDistance, enemyVelocity, Robot.lastEnemyVelocity);
-		Robot.lastEnemyVelocity = enemyVelocity;
+		wave.setSegmentations(enemyDistance, enemyVelocity, SPLRobot.lastEnemyVelocity);
+		SPLRobot.lastEnemyVelocity = enemyVelocity;
 		wave.bearing = enemyAbsoluteBearing;
 		robot.setTurnGunRightRadians(Utils.normalRelativeAngle(enemyAbsoluteBearing - robot.getGunHeadingRadians() + wave.mostVisitedBearingOffset()));
 		robot.setFire(wave.bulletPower);

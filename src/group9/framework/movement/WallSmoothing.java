@@ -1,4 +1,4 @@
-package group9.movement;
+package group9.framework.movement;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 

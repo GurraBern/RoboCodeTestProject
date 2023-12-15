@@ -42,7 +42,7 @@ public class BasicGFSurfer extends AdvancedRobot {
     // the amount of space we try to always have on either end of the tank
     // (extending straight out the front or back) before touching a wall.
     public static Rectangle2D.Double _fieldRect
-        = new Rectangle2D.Double(18, 18, 764, 564);
+        = new java.awt.geom.Rectangle2D.Double(18, 18, 764, 564);
     public static double WALL_STICK = 160;
 
     public void run() {

@@ -1,8 +1,9 @@
-package group9.movement;
+package group9.framework.movement;
 
 import robocode.AdvancedRobot;
 import robocode.ScannedRobotEvent;
 import group9.framework.util.CalcUtils;
+
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
@@ -21,7 +22,7 @@ public class GFTMovement implements IMoveable{
     private double enemyFirePower = 3;
     private double direction = 0.4;
 
-    GFTMovement(AdvancedRobot _robot) {
+    public GFTMovement(AdvancedRobot _robot) {
         this.robot = _robot;
     }
 
