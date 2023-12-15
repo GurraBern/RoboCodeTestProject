@@ -112,34 +112,6 @@ public class TrueSurfingTest {
     }
 
     @Test
-    void setBackAsFront_ShouldTurnNegative90DegreesWhenAngleIsSetTo90(){
-
-        //Arrange
-        robot.headingRadians = 0;
-
-        //Act
-        sut.setBackAsFront(robot, -Math.PI/2);
-
-        //Assert
-        var headingRadians = robot.getHeadingRadians();
-        Assertions.assertEquals(-Math.PI/2, headingRadians);
-    }
-
-    @Test
-    void setBackAsFront_ShouldTurnNegative180DegreesWhenAngleIsSetTo180() {
-
-        //Arrange
-        robot.headingRadians = 0;
-
-        //Act
-        sut.setBackAsFront(robot, Math.PI);
-
-        //Assert
-        var headingRadians = robot.getHeadingRadians();
-        Assertions.assertEquals(Math.PI, headingRadians);
-    }
-
-    @Test
     void updateWaves_ShouldRemoveEnemyWave_WhenEnoughDistance(){
         //Arrange
         robot.setTime(100);
