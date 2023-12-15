@@ -40,8 +40,8 @@ public class TrueSurfing implements IMoveable{
             robot.setTurnRadarRightRadians(Utils.normalRelativeAngle(absBearing - robot.getRadarHeadingRadians()) * 2);
 
             _surfDirections.add(0,
-                    new Integer((lateralVelocity >= 0) ? 1 : -1));
-            _surfAbsBearings.add(0, new Double(absBearing + Math.PI));
+                    (lateralVelocity >= 0) ? 1 : -1);
+            _surfAbsBearings.add(0, absBearing + Math.PI);
 
 
             double bulletPower = _oppEnergy - e.getEnergy();
@@ -241,10 +241,10 @@ public class TrueSurfing implements IMoveable{
 
 
         // This can be defined as an inner class if you want.
-        class EnemyWave {
-            Point2D.Double fireLocation;
+        public static class EnemyWave {
+            public Point2D.Double fireLocation;
             long fireTime;
-            double bulletVelocity, directAngle, distanceTraveled;
+            public double bulletVelocity, directAngle, distanceTraveled;
             int direction;
 
             public EnemyWave() { }
@@ -280,7 +280,7 @@ public class TrueSurfing implements IMoveable{
                 Utils.normalRelativeAngle(goAngle - robot.getHeadingRadians());
         if (Math.abs(angle) > (Math.PI/2)) {
             if (angle < 0) {
-                robot.setTurnRightRadians(Math.PI + angle);
+                robot.setTurnRightRadians(Math.PI + angle); //
             } else {
                 robot.setTurnLeftRadians(Math.PI - angle);
             }
@@ -289,7 +289,7 @@ public class TrueSurfing implements IMoveable{
             if (angle < 0) {
                 robot.setTurnLeftRadians(-1*angle);
             } else {
-                robot.setTurnRightRadians(angle);
+                robot.setTurnRightRadians(angle); //
             }
             robot.setAhead(100);
         }
