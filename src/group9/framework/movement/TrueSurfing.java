@@ -1,10 +1,11 @@
-package group9.movement;
+package group9.framework.movement;
 
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
 import group9.framework.util.CalcUtils;
-import group9.framework.Robot;
+import group9.framework.SPLRobot;
+import robocode.AdvancedRobot;
 import robocode.HitByBulletEvent;
 import robocode.ScannedRobotEvent;
 import robocode.util.Utils;
@@ -23,9 +24,9 @@ public class TrueSurfing implements IMoveable{
         // indicating a bullet is fired
         public static double _oppEnergy = 100.0;
 
-        private Robot robot;
+        private AdvancedRobot robot;
 
-        public TrueSurfing(Robot robot, CalcUtils util){
+        public TrueSurfing(AdvancedRobot robot){
             this.robot = robot;
         }
         @Override
@@ -274,7 +275,7 @@ public class TrueSurfing implements IMoveable{
         return Math.asin(8.0/velocity);
     }
 
-    public static void setBackAsFront(Robot robot, double goAngle) {
+    public static void setBackAsFront(AdvancedRobot robot, double goAngle) {
         double angle =
                 Utils.normalRelativeAngle(goAngle - robot.getHeadingRadians());
         if (Math.abs(angle) > (Math.PI/2)) {
