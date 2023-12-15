@@ -74,7 +74,7 @@ public class TrueSurfing implements IMoveable{
                 EnemyWave ew = (EnemyWave)_enemyWaves.get(x);
 
                 ew.distanceTraveled = (robot.getTime() - ew.fireTime) * ew.bulletVelocity;
-                System.out.println(_myLocation.distance(ew.fireLocation) + 50);
+
                 if (ew.distanceTraveled >
                         _myLocation.distance(ew.fireLocation) + 50) {
                     _enemyWaves.remove(x);
@@ -138,12 +138,6 @@ public class TrueSurfing implements IMoveable{
                 // look through the EnemyWaves, and find one that could've hit us.
                 for (int x = 0; x < _enemyWaves.size(); x++) {
                     EnemyWave ew = (EnemyWave)_enemyWaves.get(x);
-
-                    System.out.println(Math.abs(ew.distanceTraveled -
-                            _myLocation.distance(ew.fireLocation)));
-
-                    System.out.println(Math.abs(bulletVelocity(e.getBullet().getPower())
-                            - ew.bulletVelocity));
 
                     if (Math.abs(ew.distanceTraveled -
                             _myLocation.distance(ew.fireLocation)) < 50
